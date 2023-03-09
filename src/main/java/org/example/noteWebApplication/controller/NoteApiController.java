@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
-@RestController
+@Controller
 @RequestMapping("/api/notes")
 public class NoteApiController {
 
@@ -24,7 +24,8 @@ public class NoteApiController {
     @PostMapping
     @RequestMapping("/create")
     public String createNote (
-            @ModelAttribute("noteForm") Note note
+            @ModelAttribute("noteForm") Note note,
+            Model model
     ) {
         noteService.save(new Note()
                             .setNoteHeader(note.getNoteHeader())
@@ -32,23 +33,32 @@ public class NoteApiController {
                             .setCreatedAt(LocalDate.now())
                             .setEditedAt(LocalDate.now()));
 
+        model.addAttribute("notes", noteService.findAll());
+        model.addAttribute("createSuccess", "Заметка успешно создана");
+
         return "index";
     }
 
     @DeleteMapping
     @RequestMapping("/{id}/delete")
     public String deleteNote(
-            @PathVariable Long id
+            @PathVariable Long id,
+            Model model
     ) {
         noteService.deleteById(id);
-        return "заметка удалена";
+
+        model.addAttribute("notes", noteService.findAll());
+        model.addAttribute("deleteSuccess", "Заметка успешно удалена");
+
+        return "index";
     }
 
     @PutMapping
     @RequestMapping("/{id}/edit")
     public String editNote(
             @PathVariable Long id,
-            @ModelAttribute("editNoteForm") Note note
+            @ModelAttribute("editNoteForm") Note note,
+            Model model
     ) {
 
         Note updateNote = noteService.getById(id);
@@ -59,6 +69,9 @@ public class NoteApiController {
 
         noteService.save(updateNote);
 
-        return "заметка обновлена";
+        model.addAttribute("notes", noteService.findAll());
+        model.addAttribute("editSuccess", "Заметка успешно обновлена");
+
+        return "index";
     }
 }

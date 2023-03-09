@@ -31,6 +31,14 @@
                 <input name="noteBody" value="${noteFromDatabase.getNoteBody()}">
             </div>
             <button class="button btn btn-dark mx-1 d-none d-sm-block" type="submit">Изменить</button>
+            <p>
+                <#if editSuccess??>
+                    ${editSuccess}
+                </#if>
+                <#if deleteSuccess??>
+                    ${deleteSuccess}
+                </#if>
+            </p>
         </form>
     </div>
 

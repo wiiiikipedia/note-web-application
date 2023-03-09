@@ -31,6 +31,14 @@
                 <input name="noteBody" placeholder="Текст">
             </div>
             <button class="button btn btn-dark mx-1 d-none d-sm-block" type="submit">Создать</button>
+            <p>
+                <#if createSuccess??>
+                    ${createSuccess}
+                </#if>
+                <#if deleteSuccess??>
+                    ${deleteSuccess}
+                </#if>
+            </p>
         </form>
 
     </div>

@@ -80,4 +80,7 @@ form label {
     width: 100%;
     height: 2.5rem;
     background-color: whitesmoke;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
 }
