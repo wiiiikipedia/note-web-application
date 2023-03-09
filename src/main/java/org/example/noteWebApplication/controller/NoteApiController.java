@@ -1,10 +1,13 @@
 package org.example.noteWebApplication.controller;
 
+import jakarta.validation.Valid;
 import org.example.noteWebApplication.db.entity.Note;
+import org.example.noteWebApplication.form.NoteForm;
 import org.example.noteWebApplication.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -24,9 +27,17 @@ public class NoteApiController {
     @PostMapping
     @RequestMapping("/create")
     public String createNote (
-            @ModelAttribute("noteForm") Note note,
+            @ModelAttribute("noteForm") @Valid NoteForm note,
+            BindingResult bindingResult,
             Model model
     ) {
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("notes", noteService.findAll());
+            model.addAttribute("editSuccess", "Поля не могут быть пустыми!");
+            return "index";
+        }
+
         noteService.save(new Note()
                             .setNoteHeader(note.getNoteHeader())
                             .setNoteBody(note.getNoteBody())
@@ -57,9 +68,15 @@ public class NoteApiController {
     @RequestMapping("/{id}/edit")
     public String editNote(
             @PathVariable Long id,
-            @ModelAttribute("editNoteForm") Note note,
+            @ModelAttribute("editNoteForm") @Valid NoteForm note,
+            BindingResult bindingResult,
             Model model
     ) {
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("editSuccess", "Поля не могут быть пустыми!");
+            return "index";
+        }
 
         Note updateNote = noteService.getById(id);
 
