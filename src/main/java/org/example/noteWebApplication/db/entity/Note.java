@@ -2,6 +2,7 @@ package org.example.noteWebApplication.db.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,9 +13,11 @@ public class Note {
     private Long id;
     @Column(name="note_body")
     private String noteBody;
-    private Date created_at;
+    private LocalDate createdAt;
+    private LocalDate editedAt;
     @Column(name="note_header")
     private String noteHeader;
+
 
     public Long getId() {
         return id;
@@ -30,12 +33,12 @@ public class Note {
         return this;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public LocalDate getCreatedAt() {
+        return createdAt;
     }
 
-    public Note setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public Note setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
         return this;
     }
 
@@ -45,6 +48,15 @@ public class Note {
 
     public Note setNoteHeader(String noteHeader) {
         this.noteHeader = noteHeader;
+        return this;
+    }
+
+    public LocalDate getEditedAt() {
+        return editedAt;
+    }
+
+    public Note setEditedAt(LocalDate editedAt) {
+        this.editedAt = editedAt;
         return this;
     }
 }

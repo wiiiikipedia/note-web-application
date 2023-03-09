@@ -13,53 +13,27 @@
 </head>
 <body>
 <header>
-    <h1>
-        Заметки
-        <span>&#128204;</span>
-    </h1>
+    <div href="index">
+        <h1>
+            Заметки
+            <span>&#128204;</span>
+        </h1>
+    </div>
 </header>
 <main>
-    <form>
-        <label for="note">Note 1</label>
-        <textarea id="note" name="note"></textarea>
-        <button class="button btn btn-dark" type="submit">Изменить</button>
-        <button class="button btn btn-dark " type="submit">Удалить</button>
-    </form>
     <div id="notes-container">
-        <h2>Ваши заметки:</h2>
-
-        <div class="d-flex border-bottom flex-row p-3">
-            <div class="d-flex flex-column col-12 col-sm-10 col-lg-9">
-                <div class="d-flex flex-row align-items-center">
-                    <a href="#">dikola/Курсовая</a>
-                </div>
+        <form method="put" action="/api/notes/${noteFromDatabase.getId()}/edit" modelAttribute="editNoteForm">
+            <h2>Изменение заметки:</h2>
+            <div class="formContent">
+                <input name="noteHeader" value="${noteFromDatabase.getNoteHeader()}">
             </div>
-            <div class="d-flex flex-column flex-grow-1">
-                <div class="d-flex flex-row justify-content-end mb-2 align-items-center">
-                    <button class="btn btn-dark btn-sm mx-1 d-none d-sm-block">Изменить
-                    </button>
-                    <button class="btn btn-dark btn-sm mx-1 d-none d-sm-block">Удалить
-                    </button>
-                </div>
+            <div class="formContent txt">
+                <input name="noteBody" value="${noteFromDatabase.getNoteBody()}">
             </div>
-        </div>
-        <div class="d-flex border-bottom flex-row p-3">
-            <div class="d-flex flex-column col-12 col-sm-10 col-lg-9">
-                <div class="d-flex flex-row align-items-center">
-                    <a href="#">dikola/Курсовая</a>
-                </div>
-            </div>
-            <div class="d-flex flex-column flex-grow-1">
-                <div class="d-flex flex-row justify-content-end mb-2 align-items-center">
-                    <button class="btn btn-dark btn-sm mx-1 d-none d-sm-block">Изменить
-                    </button>
-                    <button class="btn btn-dark btn-sm mx-1 d-none d-sm-block">Удалить
-                    </button>
-                </div>
-            </div>
-        </div>
-
+            <button class="button btn btn-dark mx-1 d-none d-sm-block" type="submit">Изменить</button>
+        </form>
     </div>
+
 </main>
 <footer id="footer" class="bg text-center text-lg-start">
     <div class="text-center p-3" >

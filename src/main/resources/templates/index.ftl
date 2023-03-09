@@ -13,10 +13,12 @@
 </head>
 <body>
 <header>
-    <h1>
-        Заметки
-        <span>&#128204;</span>
-    </h1>
+    <div href="index">
+        <h1>
+            Заметки
+            <span>&#128204;</span>
+        </h1>
+    </div>
 </header>
 <main>
     <div id="notes-container">
@@ -28,8 +30,9 @@
             <div class="formContent txt">
                 <input name="noteBody" placeholder="Текст">
             </div>
-            <button class="button btn btn-dark mx-1 d-none d-sm-block" type="submit">Сохранить</button>
+            <button class="button btn btn-dark mx-1 d-none d-sm-block" type="submit">Создать</button>
         </form>
+
     </div>
 
     <div id="notes-container">
@@ -38,13 +41,18 @@
             <div class="d-flex border-bottom flex-row p-3">
                 <div class="d-flex flex-column col-12 col-sm-10 col-lg-9">
                     <div class="d-flex flex-row align-items-center">
-                        <a href="#">${note.getNoteHeader()}</a>
+                        <a>${note.getNoteHeader()}</a>
+                    </div>
+                    <div class="d-flex flex-row align-items-center edit">
+                        <a>Изменено ${note.getEditedAt()}</a>
                     </div>
                 </div>
                 <div class="d-flex flex-column flex-grow-1">
                     <div class="d-flex flex-row justify-content-end mb-2 align-items-center">
-<#--                        <button class="btn btn-dark btn-sm mx-1 d-none d-sm-block">Изменить</button>-->
-                        <form method="post" action="/api/notes/delete/${note.getId()}">
+                        <form method="get" action="/notes/${note.getId()}">
+                            <button class="btn btn-dark btn-sm mx-1 d-none d-sm-block">Изменить</button>
+                        </form>
+                        <form method="post" action="/api/notes/${note.getId()}/delete">
                             <button class="btn btn-dark btn-sm mx-1 d-none d-sm-block">Удалить</button>
                         </form>
                     </div>
