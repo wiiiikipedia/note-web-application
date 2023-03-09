@@ -13,11 +13,13 @@ public class Note {
     @Column(name="note_body")
     private String noteBody;
     private Date created_at;
+    @Column(name="note_header")
+    private String noteHeader;
 
     public Long getId() {
         return id;
     }
-    
+
 
     public String getNoteBody() {
         return noteBody;
@@ -34,6 +36,15 @@ public class Note {
 
     public Note setCreated_at(Date created_at) {
         this.created_at = created_at;
+        return this;
+    }
+
+    public String getNoteHeader() {
+        return noteHeader;
+    }
+
+    public Note setNoteHeader(String noteHeader) {
+        this.noteHeader = noteHeader;
         return this;
     }
 }

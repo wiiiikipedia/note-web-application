@@ -19,4 +19,9 @@ public class NoteServiceImpl
         super(jpaRepository);
         this.noteRepository = noteRepository;
     }
+
+    public Note findByNoteHeader(String noteHeader)
+    {
+        return noteRepository.findByNoteHeader(noteHeader);
+    }
 }

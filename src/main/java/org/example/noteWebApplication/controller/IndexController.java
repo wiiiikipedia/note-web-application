@@ -4,7 +4,9 @@ import org.example.noteWebApplication.db.entity.Note;
 import org.example.noteWebApplication.service.NoteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,7 +25,7 @@ public class IndexController {
     }
 
     @GetMapping("/")
-    public ModelAndView ShowPage( ){
+    public ModelAndView ShowPage(Model model){
         List<Note> notes = noteService.findAll();
 
         return new ModelAndView("index")

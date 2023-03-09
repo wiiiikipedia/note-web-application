@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+header {
+    background-color: #353b48;
+    color: whitesmoke;
+    padding: 10px;
+    text-align: center;
+}
+
+.formContent {
+    position: relative;
+    width: 360px;
+    height: 40px;
+    margin-bottom: 16px;
+}
+
+.formContent input {
+    height: 100%;
+    width: 100%;
+}
+
+/*.formContent input {*/
+/*    width: 100%;*/
+/*    height: 40px;*/
+/*    text-align: center;*/
+/*    outline: none;*/
+/*    transition: all .2s;*/
+/*    border-radius: 16px;*/
+/*    border-style: solid;*/
+/*    background: whitesmoke;*/
+/*    color: #353b48;*/
+/*}*/
+
+main {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.button {
+    border: none;
+    color: whitesmoke;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+
+#notes-container {
+    margin-top: 20px;
+}
+
+#notes-container h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+
+#footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 2.5rem;
+    background-color: whitesmoke;
+}
